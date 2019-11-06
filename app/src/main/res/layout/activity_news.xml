@@ -1,0 +1,94 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="mainData"
+                type="com.news.list.viewmodel.NewsViewModel" />
+
+    </data>
+
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:background="@color/colorDarkslategray">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recylerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:background="@color/colorWhite"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:paddingEnd="@dimen/dimen_8"
+                    android:scrollbars="vertical"
+                    app:newsRecycler="@{mainData}" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_4"
+                android:textColor="@color/colorGrey"
+                android:textStyle="bold">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{mainData.retry}"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/dimen_16"
+                    android:textStyle="bold"
+                    android:visibility="@{mainData.screenHint}" />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/retry_btn"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/dimen_16"
+                    android:textStyle="bold"
+                    android:visibility="@{mainData.retryBtn}" />
+
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/colorBlack"
+                android:gravity="center"
+                android:padding="@dimen/dimen_4"
+                android:text="@{mainData.msg}"
+                android:textColor="@color/colorWhitesmoke"
+                android:textStyle="bold"
+                android:visibility="@{mainData.msgView}" />
+
+        <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="@{mainData.progressBarVisible}" />
+
+    </FrameLayout>
+
+</layout>
